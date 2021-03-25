@@ -6,6 +6,8 @@ const migrateDb = require("./models");
 const tutorialRoutes = require("./app/routes/tutorial.routes");
 const userRoutes = require("./app/routes/user.routes");
 const companyRoutes = require("./app/routes/company.routes");
+const userWorkingDayRoutes = require("./app/routes/userworkingday.routes");
+const workingDayRoutes = require("./app/routes/workingday.routes");
 const app = express();
 
 var corsOptions = {
@@ -23,6 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/tutorials", tutorialRoutes);
 app.use("/api/company", companyRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/working_day", workingDayRoutes);
+app.use("/api/user/working_day", userWorkingDayRoutes);
 
 db.sequelize.sync(/* { force: true }).then(() => {
   console.log("Drop and re-sync db.");
